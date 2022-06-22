@@ -12,11 +12,11 @@ const users = require("./routes/User");
 const app = express();
 dotenv.config();
 app.use(cors());
+app.use(express.json());
 mongoConnect();
 app.use("/users", users);
 app.use("/products", products);
 app.use("/orders", orders);
-app.use(express.json());
 // mongoConnect();
 const PORT = process.env.PORT || 5000;
 

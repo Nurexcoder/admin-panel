@@ -23,8 +23,8 @@ export default function Tabs() {
 
     return (
         <Box sx={{ width: "100%", typography: "body1" }}>
-            <TabContext value={value}>
-                <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
+            {/* <TabContext value={value}> */}
+                {/* <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
                     <TabList
                         onChange={handleChange}
                         aria-label='lab API tabs example'>
@@ -48,10 +48,10 @@ export default function Tabs() {
                             value='2'
                         />
                     </TabList>
-                </Box>
-                <TabPanel value='1'> <TabOne/></TabPanel>
-                <TabPanel value='2'>Item Two</TabPanel>
-            </TabContext>
+                </Box> */}
+                <TabOne/>
+                {/* <TabPanel value='2'>Item Two</TabPanel> */}
+            {/* </TabContext> */}
         </Box>
     );
 }

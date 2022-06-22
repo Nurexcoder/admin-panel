@@ -4,7 +4,7 @@ import AddIcon from "@mui/icons-material/Add";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import styled from "styled-components";
-import TableOne from "./TableOne";
+import Users from "./Users";
 import TableTwo from "./TableTwo";
 import TableThree from "./TableThree";
 
@@ -41,7 +41,7 @@ const TabOne = () => {
     console.log(isClicked);
     return (
         <Container>
-            <ButtonRow>
+            {/* <ButtonRow>
                 <AddButton variant='outlined' startIcon={<AddIcon />}>
                     AddRole
                 </AddButton>
@@ -49,13 +49,9 @@ const TabOne = () => {
                     <Edit />
                     <Delete />
                 </IconContainer>
-            </ButtonRow>
+            </ButtonRow> */}
 
-            {!isClicked ? (
-                <TableOne setIsClicked={setIsClicked} isClicked={isClicked} />
-            ) : (
-                <TableTwo setIsClicked={setIsClicked} isClicked={isClicked} />
-            )}
+           <Users/>
         </Container>
     );
 };

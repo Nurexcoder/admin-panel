@@ -18,14 +18,16 @@ import styled from "styled-components";
 import { Avatar } from "@mui/material";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import QuestionMarkIcon from "@mui/icons-material/QuestionMark";
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import Tabs from "./Tabs";
+import { Inventory, People } from "@mui/icons-material";
 
 const drawerWidth = 220;
 
 const LogoContainer = styled.div`
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-evenly;
     padding: 0 25px;
 `;
 const Image = styled.img`
@@ -108,30 +110,30 @@ export default function Sidebar() {
                 {/* <Toolbar /> */}
                 <LogoContainer>
                     <Image src='/images/Subtract.png' />
-                    <LogoName>Classroom Manager</LogoName>
+                    <LogoName>Admin Panel</LogoName>
                 </LogoContainer>
                 <List>
                     <ListItem button>
                         <ListItemIcon>
-                            <Icons src='/images/dashboard.png' />
+                          <People/>
                         </ListItemIcon>
-                        <ListItemText primary='Projects' />
+                        <ListItemText primary='Users' />
                     </ListItem>
                 </List>
                 <List>
                     <ListItem button>
                         <ListItemIcon>
-                            <BusinessCenterIcon />
+                            <Inventory />
                         </ListItemIcon>
-                        <ListItemText primary='Classroom' />
+                        <ListItemText primary='Products' />
                     </ListItem>
                 </List>
                 <List>
                     <ListItem button>
                         <ListItemIcon>
-                            <SecurityIcon />
+                            <ShoppingCartIcon />
                         </ListItemIcon>
-                        <ListItemText primary='Permissions' />
+                        <ListItemText primary='Orders' />
                     </ListItem>
                 </List>
             </Drawer>
