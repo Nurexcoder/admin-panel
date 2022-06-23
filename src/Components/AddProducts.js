@@ -15,7 +15,7 @@ const style = {
     left: "50%",
     transform: "translate(-50%, -50%)",
     width: 550,
-    height: 500,
+    height: "83vh",
     bgcolor: "background.paper",
 
     boxShadow: 24,
@@ -40,19 +40,20 @@ const Header = styled.div`
     align-items: center;
     padding: 0 10px;
 `;
-export default function AddUsers({ handleClose, isChanged, setIsChanged }) {
+export default function AddProducts({ handleClose, isChanged, setIsChanged }) {
     const handleSubmit = async (e) => {
         e.preventDefault();
         let curTodo = {
-            name: e.target.name.value,
-            username: e.target.username.value,
-            email: e.target.email.value,
-            phoneNo: e.target.phoneNo.value,
+            productName: e.target.productName.value,
+            about: e.target.about.value,
+            categories: e.target.categories.value.split(" "),
+            price: e.target.price.value,
+            availablePieces: e.target.availablePieces.value,
         };
         // let key = JSON.parse(localStorage.getItem("keys")) || 0;
         // curTodo.push();
         try {
-            const res = await axios.post(`${url}/users`, curTodo);
+            const res = await axios.post(`${url}/products`, curTodo);
         } catch (error) {
             alert("Something went wrong");
         }
@@ -68,7 +69,7 @@ export default function AddUsers({ handleClose, isChanged, setIsChanged }) {
                             id='modal-modal-title'
                             align='center'
                             variant='h4'>
-                            Add User
+                            Add Product
                         </Typography>
                         <Button
                             onClick={handleClose}
@@ -79,32 +80,45 @@ export default function AddUsers({ handleClose, isChanged, setIsChanged }) {
                         </Button>
                     </Header>
                     <Input
-                        required
                         id='outlined-basic'
-                        label='Name'
+                        required
+                        label='Product Name'
                         variant='outlined'
-                        name='name'
+                        name='productName'
                     />
                     <Input
                         required
                         id='outlined-basic'
-                        label='Username'
+                        label='About'
                         variant='outlined'
-                        name='username'
+                        multiline
+                        rows={3}
+                        name='about'
                     />
                     <Input
                         required
                         id='outlined-basic'
-                        label='Email'
+                        label='Categories (Space seperated)'
                         variant='outlined'
-                        name='email'
+                        name='categories'
                     />
                     <Input
                         required
                         id='outlined-basic'
-                        label='Phono No'
+                        label='Price'
                         variant='outlined'
-                        name='phoneNo'
+                        type='number'
+                        name='price'
+                        // onWheel={(e) => e.currentTarget.blur()}
+                    />
+                    <Input
+                        required
+                        id='outlined-basic'
+                        label='Available Pieces'
+                        variant='outlined'
+                        type='number'
+                        name='availablePieces'
+                        // onWheel={(e) => e.currentTarget.blur()}
                     />
 
                     <AddButton

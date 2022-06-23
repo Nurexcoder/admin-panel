@@ -7,35 +7,15 @@ import RadioButtonUncheckedIcon from "@mui/icons-material/RadioButtonUnchecked";
 import styled from "styled-components";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import AddUsers from "./AddUsers";
+import AddProducts from "./AddProducts";
 import { url } from "../config";
 
-// const AccessButton = styled.div`
-//     background: rgba(39, 174, 96, 0.3);
-//     /* Green 2 */
-//     width: 100%;
-//     padding: 5px 10px;
-//     border: 1px solid #27ae60;
-//     text-align: center;
-//     box-sizing: border-box;
-//     border-radius: 20px;
-// `;
-// const DeniedButton = styled.div`
-//     width: 100%;
-//     padding: 5px 10px;
-//     text-align: center;
-//     background: rgba(255, 8, 8, 0.3);
-//     /* expensive */
 
-//     border: 1px solid #ff0808;
-//     box-sizing: border-box;
-//     border-radius: 20px;
-// `;
-const AddUserButton = styled(Button)`
+const AddProductButton = styled(Button)`
     margin:10px 0 !important;
 `;
 
-export default function Users() {
+export default function Products() {
     const [isChanged, setIsChanged] = useState(true);
     const [data, setData] = useState([]);
 
@@ -44,33 +24,48 @@ export default function Users() {
     const handleClose = () => setOpen(false);
     const columns = [
         {
-            field: "name",
-            headerName: "Name",
+            field: "productName",
+            headerName: "Product Name",
             headerClassName: "super-app-theme--header",
             headerAlign: "center",
             align: "center",
-            width: 280,
+            width: 240,
         },
 
         {
-            field: "username",
-            headerName: "Username",
+            field: "about",
+            headerName: "About",
             headerClassName: "super-app-theme--header",
             headerAlign: "center",
             align: "center",
-            width: 240,
+            width: 220,
         },
         {
-            field: "email",
-            headerName: "Email",
+            field: "categories",
+            headerName: "Categories",
             headerClassName: "super-app-theme--header",
             headerAlign: "center",
             align: "center",
-            width: 240,
+            width: 180,
+            renderCell:(cellValues)=>{
+                return(
+                    <>
+                        {cellValues.formattedValue.map(val=> '#'+val+' ')}
+                    </>
+                )
+            }
         },
         {
-            field: "phoneNo",
-            headerName: "Phone Number",
+            field: "price",
+            headerName: "Price(₹)",
+            headerClassName: "super-app-theme--header",
+            headerAlign: "center",
+            align: "center",
+            width: 180,
+        },
+        {
+            field: "availablePieces",
+            headerName: "Available Price",
             headerClassName: "super-app-theme--header",
             headerAlign: "center",
             align: "center",
@@ -80,7 +75,7 @@ export default function Users() {
 
     useEffect(() => {
         const getData = async () => {
-            const res = await axios.get(`${url}/users`);
+            const res = await axios.get(`${url}/products`);
             let realData = [];
             console.log(res);
             res.data.forEach((element) => {
@@ -104,18 +99,18 @@ export default function Users() {
                 },
                 mt: "15px",
             }}>
-            <AddUserButton
+            <AddProductButton
                 color='success'
                 variant='contained'
                 onClick={handleOpen}>
-                Add Users
-            </AddUserButton>
+                Add Products
+            </AddProductButton>
             <Modal
                 open={open}
                 onClose={handleClose}
                 aria-labelledby='modal-modal-title'
                 aria-describedby='modal-modal-description'>
-                <AddUsers
+                <AddProducts
                     handleClose={handleClose}
                     isChanged={isChanged}
                     setIsChanged={setIsChanged}

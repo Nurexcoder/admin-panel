@@ -12,7 +12,8 @@ router.get("/", async (req, res) => {
 });
 router.post("/", async (req, res) => {
     try {
-        const products = await Products.save(req.body);
+        const products = new Products(req.body);
+        await products.save()
         res.status(200).json(products);
     } catch (err) {
         res.status(500).send("Something went wrong");
